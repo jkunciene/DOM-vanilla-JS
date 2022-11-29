@@ -114,23 +114,22 @@ continents.forEach(continent => {
     menuButton.innerText = continent;
     continents_buttons.appendChild(menuButton);
 })
+
 const my_buttons = document.getElementsByTagName('button');
+const card_continents = document.getElementsByTagName('h4');
 //console.log(my_buttons);
 for(let one_category of my_buttons){
     
-    one_category.addEventListener('click',
-    ()=>{
-        console.log(one_category.innerText);
-        const card_continents = document.getElementsByTagName('h4');
-        console.log(card_continents);
-        for(let item of card_continents){
-            if(item.innerText != one_category.innerText){
-console.log(`${one_category.innerText}   ${item.innerText}`)
-            }
-        }
-       
-    })
+    one_category.addEventListener('click', ()=>{getCountry(one_category.innerText)})
 }
-
-
+const naujas_array = [];
+const getCountry = (continentas) => {
+    console.log(continentas)
+  // const naujas_array = card_continents.filter(item => item.innerText == continentas);
+   for(let item of card_continents){
+     naujas_array.push(item.innerText);
+   }
+   const atrinktas = naujas_array.filter(item => item === continentas)
+   console.log(atrinktas); //html collections
+}
 
