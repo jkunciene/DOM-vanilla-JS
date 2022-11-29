@@ -1,16 +1,15 @@
 import allCountries from './data.js';
 console.log(allCountries);
-(async()=> {
 
-    const my_main_div = document.getElementById('main_div');
+const my_main_div = document.getElementById('main_div');
 
 //meniu punktai filtravimui
 const continents = ['all'];
 
 allCountries.map(country => {
     // console.log(country.name.common);
-    if (!continents.includes(country.continents[0])) 
-    continents.push(country.continents[0]);
+    if (!continents.includes(country.continents[0]))
+        continents.push(country.continents[0]);
 
     //kurti div kiekvienai saliai
     const one_country_info = document.createElement('div');
@@ -38,7 +37,7 @@ allCountries.map(country => {
     one_country_info.appendChild(my_country_capital);
 
     //kuriu spausdinu kontineta
-    const one_country_continent = document.createElement('p');
+    const one_country_continent = document.createElement('h4');
     one_country_continent.innerText = country.continents;
     one_country_continent.classList.add("continent");
     //console.log(country.continents);
@@ -114,17 +113,24 @@ continents.forEach(continent => {
     const menuButton = document.createElement('button');
     menuButton.innerText = continent;
     continents_buttons.appendChild(menuButton);
-    menuButton.addEventListener('click', (e) => {
-        const children = continents_buttons.children;
-        console.log(children) //masyvas html collection su 8 button
-        
-        for(let one_category of children){
-            console.log(one_category);
-           console.log(one_category.innerText); //gaunu visus kontinentus
-           
-        }
-    })
 })
-})()
+const my_buttons = document.getElementsByTagName('button');
+//console.log(my_buttons);
+for(let one_category of my_buttons){
+    
+    one_category.addEventListener('click',
+    ()=>{
+        console.log(one_category.innerText);
+        const card_continents = document.getElementsByTagName('h4');
+        console.log(card_continents);
+        for(let item of card_continents){
+            if(item.innerText != one_category.innerText){
+console.log(`${one_category.innerText}   ${item.innerText}`)
+            }
+        }
+       
+    })
+}
+
 
 
